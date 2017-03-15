@@ -1,1 +1,3 @@
+rmd_files: ["index.Rmd", "intro.Rmd"]
+new_session: yes
 output_dir: "docs"
