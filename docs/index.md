@@ -8,6 +8,7 @@ output:
   bookdown::gitbook: default
 link-citations: yes
 github-repo: welliton309/linuxbioinf
+url: 'https\://welliton309.github.io/linuxbioinf'
 ---
 
 # Prefácio
