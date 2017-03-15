@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
+<link rel="prev" href="admin.html">
 
-<link rel="next" href="admin.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -102,24 +102,26 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Linux para Bioinformática</h1>
-<h4 class="author"><em>Welliton Souza</em></h4>
-<h4 class="date"><em>2017-03-15</em></h4>
-</div>
-<div id="prefacio" class="section level1">
-<h1><span class="header-section-number">1</span> Prefácio</h1>
-<p><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" alt="Creative Commons License"></p>
-<p>Esse material está licenciado sob a licença <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a>. Você pode contribuir com esse projeto enviando <a href="https://github.com/Welliton309/linuxbioinf/issues/new">issues</a> e <a href="https://github.com/Welliton309/linuxbioinf/pull/new/master">pull requests</a>.</p>
+<div id="tips" class="section level1">
+<h1><span class="header-section-number">3</span> Dicas</h1>
+<div id="instalando-fontes-do-microsoft-windows" class="section level2">
+<h2><span class="header-section-number">3.1</span> Instalando fontes do Microsoft Windows</h2>
+<p>O sistema operacional GNU/Linux não vem com as fontes mais conhecidas (como Arial, Times New Roman, Tahoma, etc.) porque essas fontes são proprietárias. É possível instalar essas fontdes de duas formas (distribuição Ubuntu). A mais fácil é instalar o pacote de sistema <code>ttf-mscorefonts-installer</code>.</p>
+<pre><code>sudo apt-get install ttf-mscorefonts-installer</code></pre>
+<p>O pacote baixa da Internet e instala as principais fontes da Microsoft.</p>
+<p>Outra forma é instalar, manualmente, as fontes a partir de uma instalação Windows. Esse processo fica mais fácil quando o sistema da Microsoft está intalado em <em>dual-boot</em> com o Linux. Para fazer isso, basta 1) copiar a pasta <code>C:\Windows\Fonts</code> da partição do Windows para o diretório <em>home</em> do usuário, 2) renomear o diretório <code>~/Fonts</code> para <code>~/.fonts</code> e 3) executar o comando que atualiza o <em>cache</em> de fontes.</p>
+<pre><code>sudo fc-cache -fv</code></pre>
+<p>Para testar a instalação das fontes basta iniciar o programa LibreOffice ou sismilar e verificar se as novas fontes aparecem na caixa de seleção de fontes.</p>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="admin.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="admin.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

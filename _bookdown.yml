@@ -1,3 +1,3 @@
-rmd_files: ["index.Rmd", "intro.Rmd"]
+rmd_files: ["index.Rmd", "admin.Rmd", "tips.Rmd"]
 new_session: yes
 output_dir: "docs"
