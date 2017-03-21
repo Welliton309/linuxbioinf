@@ -1,23 +1,33 @@
 # Administração {#admin}
 
-## Tipos de Contas
+## Super usuário
 
-- root
-- Sistema
-- Normal
-- Rede
+Sistemas operacionais derivados do UNIX foram concebidos para funcionar em computadores de grande porte (_mainframes_ por exemplo) para realização das tarefas de processamento.
+Os usuários utilizavam computadores menores (chamados de terminais burros) para acessar esses _mainframes_ via rede.
+Nesse modelo chamado de cliente-servidor, vários usuários clientes acessam o mesmo computador e competem pelos recursos disponíveis do servidor.
+Esses usuários comuns estão limitados ao seu próprio espaço de usuário (diretório _home_) e comandos que não afetam outros usuários.
+A administração do sistema fica por conta de um usuário especial do sistema, chamado de _root_, capaz de acessar qualquer diretório dentro do sistema de arquivos, gerenciar conntas de usuários, executar todos os comandos, inclusive programas capazes de modificar o comportamento do sistema, como por exemplo reiniciar o computador.
+Esse modelo de usuários e níveis de permissões mantém-se até hoje nos sistemas operacionais derivados do UNIX como o Linux e o macOS.
+O super usuário possui uma senha própria e um diretório pessoal em `/root`.
 
-Para um ambiente de trabalho seguro é recomendado proporcionar o mínimo possível de privilégios para as contas e remover contas inativas.
-O comando `last` lista a última vez que cada usuário entrou no sistema.
+Esse modelo pode ser ineficiente quando mais de uma pessoa administra o mesmo servidor e precisa compartilhar o usuário _root_.
+Nesse caso os registros de atividades (_logs_) são facilmente apagados pelo próprio super usuário (basta executar, conectado como _root_, o comando `history -l` para apagar o histórico de comandos).
+A solução é impedir conexões como usuário _root_ (não possui senha própria) e dar "poderes" de administrador para usuários comuns.
+Esse modelo é o padrão para a distribuição Ubuntu ([referência](https://help.ubuntu.com/community/RootSudo)).
+O usuário criado durante a instalação do sistema recebe poderes de administrador.
 
-## Conta `root`
-Não há restrições de seguranças impostas para a conta `root`.
-Os previlégios de `root` são necessários para:
+Essa solução, chamada de **sudo** (_**s**uper**u**ser_ _**do**_), permite que usuários comuns executem comandos como super usuário.
+Escrevendo `sudo` no início da linha de comando, o sistema irá solicitar a senha do usuário atual e verificar se esse usuário pertence ao grupo _sudo_.
+Após a autenticação, o comando é executado como root e uma entrada é adicionada ao registro de eventos do sistema (localizado em `/var/log/auth.log`).
+Esse arquivo de log é muito importante para auditoria de segurança quando há a necessidade de verificar qual usuário com poderes de administrador executou um comando que prejudicou o funcionamento do sistema multiusuário.
+Se esse arquivo for apagado ou alterado, é um indício de que houve invasão e o invasor apagou arquivos do sistema para não deixar rastros.
+Por exemplo, quando um usuário com poderes administrativos reinicia o computador, ficará registrado nos arquivos de log uma entrada como essa linha abaixo.
 
-- Criar, remover e gerenciar contas de usuários
-- Gerenciar pacotes de *software*
-- Remover ou modificar arquivos do sistema
-- Reiniciar serviços do sistema
+```
+Mar 21 13:50:35 desk3 sudo: welliton : TTY=pts/0 ; PWD=/home/welliton ; USER=root ; COMMAND=/sbin/reboot
+```
+
+O `sudo:` indica que foi utilizado o comando _sudo_ pelo usuário `welliton` no terminal `pts/0`. O diretório de trabalho era `/home/welliton`. O usuário executou como `root` o comando `/sbin/reboot`.
 
 ## Criar novo usuário
 
@@ -61,14 +71,17 @@ Para remover o usuário, seu diretório pessoal e todas as informações relacio
 * Executar aplicações como `passwd`
 
 ## `su` vs `sudo`
+
 * `su` Quando avaliado, é necessário entrar com a senha de `root`. Jamais deve dar a senha de `root` para um usuário normal.|Quando avaliado, é necessário entrar com a senha de usuário. O comando tem *logging* limitado.
 * `sudo` Após ser avaliado como `root` usando `su`, o usuário consegue fazer qualquer coisa que o `root` pode fazer pelo tempo que desejar sem ser pedido por uma senha novamente.|Oferece mais opções e é considerado mais seguro e mais configurável. O que o usuário pode fazer pode ser controlado e limitado. Por padrão, o usuário terá que informar a senha em todas as operações com o comando `sudo`. O comando tem *logging* detalhado.
 
 ### sudo
+
 * arquivo `/etc/sudoers` e diretório `/etc/sudoers.d/` mantém as informações de configuração e autorização.
 * o arquivo de `/var/log/secure` (ou `/var/log/messages`, na família **Debian** é `/var/log/auth.log`) registra as tentativas de *login* e *sudo* que falharam.
 
 ### Arquivo `sudoers`
+
 O arquivo `sudoers` pode ser editado usando o comando `visudo`.
 A estrutura básica é:
 
@@ -77,7 +90,9 @@ A estrutura básica é:
 Em alguns sistemas é utilizado o diretório `sudoers.d` com um arquivo para cada usuário.
 
 ### *logging* do comando
+
 Informações gravadas a cada tentativa de usar `sudo`:
+
 * Nome do usuário
 * Informações de terminal
 * Diretório de trabalho

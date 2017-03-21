@@ -1,7 +1,7 @@
 ---
 title: "Linux para Bioinformática"
 author: "Welliton Souza"
-date: "2017-03-15"
+date: "2017-03-21"
 site: bookdown::bookdown_site
 documentclass: book
 output:
