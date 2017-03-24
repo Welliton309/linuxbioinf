@@ -123,12 +123,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.1" data-path="bioinf.html"><a href="bioinf.html#instalar-ambiente-estatistico-r"><i class="fa fa-check"></i><b>3.1</b> Instalar ambiente estatístico R</a></li>
 <li class="chapter" data-level="3.2" data-path="bioinf.html"><a href="bioinf.html#instalar-rstudio-server"><i class="fa fa-check"></i><b>3.2</b> Instalar RStudio Server</a></li>
 <li class="chapter" data-level="3.3" data-path="bioinf.html"><a href="bioinf.html#pacotes-extras-opcional"><i class="fa fa-check"></i><b>3.3</b> Pacotes extras (opcional)</a></li>
+<li class="chapter" data-level="3.4" data-path="bioinf.html"><a href="bioinf.html#instalar-r-a-partir-do-codigo-fonte"><i class="fa fa-check"></i><b>3.4</b> Instalar R a partir do código fonte</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="hardware.html"><a href="hardware.html"><i class="fa fa-check"></i><b>4</b> Informações sobre Hardware</a><ul>
 <li class="chapter" data-level="4.1" data-path="hardware.html"><a href="hardware.html#memoria-ram"><i class="fa fa-check"></i><b>4.1</b> Memória RAM</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="hardware.html"><a href="hardware.html#uso-da-memoria-ram"><i class="fa fa-check"></i><b>4.1.1</b> Uso da memória RAM</a></li>
+<li class="chapter" data-level="4.1.2" data-path="hardware.html"><a href="hardware.html#informacoes-da-memoria-ram"><i class="fa fa-check"></i><b>4.1.2</b> Informações da memória RAM</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="hardware.html"><a href="hardware.html#informacoes-da-memoria-ram"><i class="fa fa-check"></i><b>4.2</b> Informações da memória RAM</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="tips.html"><a href="tips.html"><i class="fa fa-check"></i><b>5</b> Dicas</a><ul>
 <li class="chapter" data-level="5.1" data-path="tips.html"><a href="tips.html#instalando-fontes-do-microsoft-windows"><i class="fa fa-check"></i><b>5.1</b> Instalando fontes do Microsoft Windows</a></li>
@@ -169,9 +170,8 @@ Mem:           3,8G        2,5G        186M        371M        1,2G        776M
 Swap:          4,0G        411M        3,6G</code></pre>
 <p>No exemplo acima, a memória toal e utilizada aparecem em <em>gigabytes</em> e a memória disponível em <em>megabytes</em>.</p>
 </div>
-</div>
-<div id="informacoes-da-memoria-ram" class="section level2">
-<h2><span class="header-section-number">4.2</span> Informações da memória RAM</h2>
+<div id="informacoes-da-memoria-ram" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Informações da memória RAM</h3>
 <p>A linha de comando a seguir imprime informações sobre os pentes de memória RAM instalados no computador (<a href="https://www.cyberciti.biz/faq/check-ram-speed-linux/">referência</a>):</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> dmidecode --type 17</code></pre></div>
 <pre><code># dmidecode 3.0
@@ -242,6 +242,7 @@ Memory Device
 ...</code></pre>
 <p>A informação do pente de memória aparece mais 17 vezes! Dessa forma, esse servidor tem <strong>144 GB</strong> de memória RAM.</p>
 
+</div>
 </div>
 </div>
             </section>

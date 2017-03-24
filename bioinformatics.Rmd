@@ -80,3 +80,99 @@ O Rstudio tem integração com programas de versionamento de códigos.
 ```{bash}
 sudo apt-get install git
 ```
+
+## Instalar R a partir do código fonte
+
+A versão recomendada do R para utilização é a versão estável mais atual. Entretanto, quando a tarefa é desenvolver e testar novos pacotes para o R/Bioconductor é importante utilizar a última versão do R lançada. Essa versão pode ser considerada instável e por isso imprópria para ambientes de produção. Dessa forma, este tutorial ensina a instalar a última versão do R a partir do código fonte, mas sem alterar a versão do R instalada no sistema operacional. Sempre que lançado uma nova versão do R é importante atualizar o programa antes de testar os pacotes em desenvolvimento. Para ter a versão mais atual do R é necessário baixar e compilar o código fonte manualmente.
+
+Instalar pacotes do sistema para compilar códigos fonte. O pacote `xorg-dev` é opcional mas recomendado.
+
+```{bash}
+sudo apt-get install build-essential gfortran libreadline6-dev openjdk-7-jdk libcurl4-gnutls-dev libpcre3-dev libbz2-dev xorg-dev
+```
+
+*LaTeX* é uma coleção de programas compiladores e arquivos de fontes de texto para criação de documentos com alta resolução. Os vignettes e manuais de pacotes R/Bioconductor são criados a partir do uso do LaTeX em conjunto com outras ferramentas próprias como Sweave e knitr. Dessa forma é importante ter os pacotes do LaTeX instalados na máquina de desenvolvimento, entretanto ocupa muito espeço em disco. A instalação do LaTeX é opcional, mas é necessário para gerar a documentação em HTML e PDF, inclusive os *vignettes*. Para instalar nos sistemas Ubuntu e Debian:
+
+Baixar a versão mais atual do R.
+
+```{bash}
+wget https://cran.r-project.org/src/base-prerelease/R-latest.tar.gz
+```
+
+Extrair e acessar diretório.
+
+```{bash}
+tar -xf R-latest.tar.gz
+cd R-beta/
+```
+
+Configurar ambiente e parâmetros de compilação.
+
+```{bash}
+./configure
+```
+
+A saída do script `configure` é importante também para verificar se o sistema operacional atende as dependências do R. Abaixo o resumo do script após executado.
+
+```
+R is now configured for x86_64-pc-linux-gnu
+
+  Source directory:          .
+  Installation directory:    /usr/local
+
+  C compiler:                gcc  -g -O2
+  Fortran 77 compiler:       f95  -g -O2
+
+  C++ compiler:              g++  -g -O2
+  C++11 compiler:            g++  -std=c++11 -g -O2
+  Fortran 90/95 compiler:    gfortran -g -O2
+  Obj-C compiler:	      
+
+  Interfaces supported:      X11
+  External libraries:        readline, curl
+  Additional capabilities:   PNG, NLS
+  Options enabled:           shared BLAS, R profiling
+
+  Capabilities skipped:      JPEG, TIFF, cairo, ICU
+  Options not enabled:       memory profiling
+
+  Recommended packages:      yes
+ ```
+ 
+Na listagem acima é possível observar que os compiladores que serão utilizado são GNU (gcc, g++ e gfortran). Também mostra que o programa suportará interface gráfica (X11) e diversos tipos de formatos de imagem (PNG, JPEG, etc).
+
+O próximo passo é compilar o programa (isso pode levar um tempo considerável).
+
+```{bash}
+make
+```
+
+Para executar o R.
+
+```{bash}
+bin/R
+```
+    
+Versão do R
+
+```{bash}
+bin/R --version
+```
+
+```
+R version 3.3.0 beta (2016-03-30 r70404) -- "Supposedly Educational"
+Copyright (C) 2016 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under the terms of the
+GNU General Public License versions 2 or 3.
+For more information about these matters see
+http://www.gnu.org/licenses/.
+```
+    
+(Opcional) Como listado na saída do script `configure`, é configurado um diretório no sistema para instalar o R para todos os usuários (no exemplo o diretório `/usr/local). Isso pode atrapalhar o R previamente intalado. Para instalar o R no sistema.
+
+```{bash}
+sudo make install
+```

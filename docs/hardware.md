@@ -37,7 +37,7 @@ Swap:          4,0G        411M        3,6G
 
 No exemplo acima, a memória toal e utilizada aparecem em _gigabytes_ e a memória disponível em _megabytes_.
 
-## Informações da memória RAM
+### Informações da memória RAM
 
 A linha de comando a seguir imprime informações sobre os pentes de memória RAM instalados no computador ([referência](https://www.cyberciti.biz/faq/check-ram-speed-linux/)):
 

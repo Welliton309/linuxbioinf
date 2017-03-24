@@ -123,12 +123,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.1" data-path="bioinf.html"><a href="bioinf.html#instalar-ambiente-estatistico-r"><i class="fa fa-check"></i><b>3.1</b> Instalar ambiente estatístico R</a></li>
 <li class="chapter" data-level="3.2" data-path="bioinf.html"><a href="bioinf.html#instalar-rstudio-server"><i class="fa fa-check"></i><b>3.2</b> Instalar RStudio Server</a></li>
 <li class="chapter" data-level="3.3" data-path="bioinf.html"><a href="bioinf.html#pacotes-extras-opcional"><i class="fa fa-check"></i><b>3.3</b> Pacotes extras (opcional)</a></li>
+<li class="chapter" data-level="3.4" data-path="bioinf.html"><a href="bioinf.html#instalar-r-a-partir-do-codigo-fonte"><i class="fa fa-check"></i><b>3.4</b> Instalar R a partir do código fonte</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="hardware.html"><a href="hardware.html"><i class="fa fa-check"></i><b>4</b> Informações sobre Hardware</a><ul>
 <li class="chapter" data-level="4.1" data-path="hardware.html"><a href="hardware.html#memoria-ram"><i class="fa fa-check"></i><b>4.1</b> Memória RAM</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="hardware.html"><a href="hardware.html#uso-da-memoria-ram"><i class="fa fa-check"></i><b>4.1.1</b> Uso da memória RAM</a></li>
+<li class="chapter" data-level="4.1.2" data-path="hardware.html"><a href="hardware.html#informacoes-da-memoria-ram"><i class="fa fa-check"></i><b>4.1.2</b> Informações da memória RAM</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="hardware.html"><a href="hardware.html#informacoes-da-memoria-ram"><i class="fa fa-check"></i><b>4.2</b> Informações da memória RAM</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="tips.html"><a href="tips.html"><i class="fa fa-check"></i><b>5</b> Dicas</a><ul>
 <li class="chapter" data-level="5.1" data-path="tips.html"><a href="tips.html#instalando-fontes-do-microsoft-windows"><i class="fa fa-check"></i><b>5.1</b> Instalando fontes do Microsoft Windows</a></li>
@@ -187,6 +188,46 @@ deb http://www.vps.fmvz.usp.br/CRAN/bin/linux/ubuntu xenial/</code></pre>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> apt-get install texlive texlive-latex-extra texlive-fonts-extra texinfo</code></pre></div>
 <p>Para concluir instalar o git. O Rstudio tem integração com programas de versionamento de códigos.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> apt-get install git</code></pre></div>
+</div>
+<div id="instalar-r-a-partir-do-codigo-fonte" class="section level2">
+<h2><span class="header-section-number">3.4</span> Instalar R a partir do código fonte</h2>
+<p>A versão recomendada do R para utilização é a versão estável mais atual. Entretanto, quando a tarefa é desenvolver e testar novos pacotes para o R/Bioconductor é importante utilizar a última versão do R lançada. Essa versão pode ser considerada instável e por isso imprópria para ambientes de produção. Dessa forma, este tutorial ensina a instalar a última versão do R a partir do código fonte, mas sem alterar a versão do R instalada no sistema operacional. Sempre que lançado uma nova versão do R é importante atualizar o programa antes de testar os pacotes em desenvolvimento. Para ter a versão mais atual do R é necessário baixar e compilar o código fonte manualmente.</p>
+<p>Instalar pacotes do sistema para compilar códigos fonte. O pacote <code>xorg-dev</code> é opcional mas recomendado.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> apt-get install build-essential gfortran libreadline6-dev openjdk-7-jdk libcurl4-gnutls-dev libpcre3-dev libbz2-dev xorg-dev</code></pre></div>
+<p><em>LaTeX</em> é uma coleção de programas compiladores e arquivos de fontes de texto para criação de documentos com alta resolução. Os vignettes e manuais de pacotes R/Bioconductor são criados a partir do uso do LaTeX em conjunto com outras ferramentas próprias como Sweave e knitr. Dessa forma é importante ter os pacotes do LaTeX instalados na máquina de desenvolvimento, entretanto ocupa muito espeço em disco. A instalação do LaTeX é opcional, mas é necessário para gerar a documentação em HTML e PDF, inclusive os <em>vignettes</em>. Para instalar nos sistemas Ubuntu e Debian:</p>
+<p>Baixar a versão mais atual do R.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> https://cran.r-project.org/src/base-prerelease/R-latest.tar.gz</code></pre></div>
+<p>Extrair e acessar diretório.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">tar</span> -xf R-latest.tar.gz
+<span class="kw">cd</span> R-beta/</code></pre></div>
+<p>Configurar ambiente e parâmetros de compilação.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">./configure</span></code></pre></div>
+<p>A saída do script <code>configure</code> é importante também para verificar se o sistema operacional atende as dependências do R. Abaixo o resumo do script após executado.</p>
+<p>``` R is now configured for x86_64-pc-linux-gnu</p>
+<p>Source directory: . Installation directory: /usr/local</p>
+<p>C compiler: gcc -g -O2 Fortran 77 compiler: f95 -g -O2</p>
+<p>C++ compiler: g++ -g -O2 C++11 compiler: g++ -std=c++11 -g -O2 Fortran 90/95 compiler: gfortran -g -O2 Obj-C compiler:</p>
+<p>Interfaces supported: X11 External libraries: readline, curl Additional capabilities: PNG, NLS Options enabled: shared BLAS, R profiling</p>
+<p>Capabilities skipped: JPEG, TIFF, cairo, ICU Options not enabled: memory profiling</p>
+<p>Recommended packages: yes ```</p>
+<p>Na listagem acima é possível observar que os compiladores que serão utilizado são GNU (gcc, g++ e gfortran). Também mostra que o programa suportará interface gráfica (X11) e diversos tipos de formatos de imagem (PNG, JPEG, etc).</p>
+<p>O próximo passo é compilar o programa (isso pode levar um tempo considerável).</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">make</span></code></pre></div>
+<p>Para executar o R.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">bin/R</span></code></pre></div>
+<p>Versão do R</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">bin/R</span> --version</code></pre></div>
+<pre><code>R version 3.3.0 beta (2016-03-30 r70404) -- &quot;Supposedly Educational&quot;
+Copyright (C) 2016 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under the terms of the
+GNU General Public License versions 2 or 3.
+For more information about these matters see
+http://www.gnu.org/licenses/.</code></pre>
+<p>(Opcional) Como listado na saída do script <code>configure</code>, é configurado um diretório no sistema para instalar o R para todos os usuários (no exemplo o diretório `/usr/local). Isso pode atrapalhar o R previamente intalado. Para instalar o R no sistema.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> make install</code></pre></div>
 
 </div>
 </div>
