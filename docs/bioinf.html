@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="hardware.html">
-
+<link rel="prev" href="admin.html">
+<link rel="next" href="hardware.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -150,16 +150,43 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tips" class="section level1">
-<h1><span class="header-section-number">5</span> Dicas</h1>
-<div id="instalando-fontes-do-microsoft-windows" class="section level2">
-<h2><span class="header-section-number">5.1</span> Instalando fontes do Microsoft Windows</h2>
-<p>O sistema operacional GNU/Linux não vem com as fontes mais conhecidas (como Arial, Times New Roman, Tahoma, etc.) porque essas fontes são proprietárias. É possível instalar essas fontdes de duas formas (distribuição Ubuntu). A mais fácil é instalar o pacote de sistema <code>ttf-mscorefonts-installer</code>.</p>
-<pre><code>sudo apt-get install ttf-mscorefonts-installer</code></pre>
-<p>O pacote baixa da Internet e instala as principais fontes da Microsoft.</p>
-<p>Outra forma é instalar, manualmente, as fontes a partir de uma instalação Windows. Esse processo fica mais fácil quando o sistema da Microsoft está intalado em <em>dual-boot</em> com o Linux. Para fazer isso, basta 1) copiar a pasta <code>C:\Windows\Fonts</code> da partição do Windows para o diretório <em>home</em> do usuário, 2) renomear o diretório <code>~/Fonts</code> para <code>~/.fonts</code> e 3) executar o comando que atualiza o <em>cache</em> de fontes.</p>
-<pre><code>sudo fc-cache -fv</code></pre>
-<p>Para testar a instalação das fontes basta iniciar o programa LibreOffice ou sismilar e verificar se as novas fontes aparecem na caixa de seleção de fontes.</p>
+<div id="bioinf" class="section level1">
+<h1><span class="header-section-number">3</span> Bioinformática</h1>
+<p>Nesse capítulo é apresentado como instalar programas de Bioinformática.</p>
+<div id="instalar-ambiente-estatistico-r" class="section level2">
+<h2><span class="header-section-number">3.1</span> Instalar ambiente estatístico R</h2>
+<p>As distribuições Ubuntu e Debian possuem o programa R pronto para ser instalado via Internet usando o gerenciador de pacotes <code>apt-get</code> (ou <code>aptitude</code>), entretanto a versão do programa R disponível é desatualizada. Para obter a versão mais atual do programa R é preciso adicionar a fonte de pacotes do CRAN usando algum <em>mirror</em> oficial e editar o arquivo de configuração do sistema localizado em <code>/etc/apt/sources.list</code>.</p>
+<p>Adicionar a fonte de pacotes, nesse caso é utilizado o <em>mirror</em> oficial da <a href="http://www.vps.fmvz.usp.br/CRAN/">FMVZ USP</a>. A lista de mirrors oficials esta disponível <a href="http://cran.r-project.org/mirrors.html">aqui</a>. O texto a segir deve ser adicionado no final do arquivo <code>/etc/apt/sources.list</code>.</p>
+<pre><code># R repositories - lasted package versions
+deb http://www.vps.fmvz.usp.br/CRAN/bin/linux/ubuntu xenial/</code></pre>
+<p>Após salvar as alterações no arquivo é necessário atualizar a lista de pacotes do gerenciador.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> apt-get update</code></pre></div>
+<p>Haverá um aviso sobre a identidade da nova fonte de pacotes, para resolver é necessário fazer a autenticação. Esse passo é opcional.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9</code></pre></div>
+<p>Pronto. Agora instalar o programa R e suas dependências.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> apt-get install r-base-dev</code></pre></div>
+<p>É recomendado instalar os pacotes do R dentro do ambiente usando a função <code>install.packages</code> pois eles estão mais atualizados. Fazer isso como usuário comum, assim os pacotes instalados ficam no diretório pessoal do usuário e não interfere na administração do sistema.</p>
+</div>
+<div id="instalar-rstudio-server" class="section level2">
+<h2><span class="header-section-number">3.2</span> Instalar RStudio Server</h2>
+<p>Passo a passo para instalação do programa estatístico <em>R</em> e o progrma <em>RStudio</em> versão servidor. O <em>RStudio Server</em> é executado no sistema operacional como um serviço, sua IDE (interface de desenvolvimento integrado) é acessado a partir do navegador Web, todo o processamento é executado na maquina servidora. A autenticação da IDE é feita utilizando informações de usuários de sistema, vários usuários podem utilizar o ambiente de desenvolvimento simultaneamente.</p>
+<p>Essa configuração é recomendada para ambientes multiusuários onde os computadores Desktop não possuem recurso computacional (processador, memória RAM e disco) suficiente para executar as análises em R. Também existe a versão Desktop do <em>Rstudio</em>, mais informações no <a href="http://www.rstudio.com/products/RStudio/">site oficial</a>.</p>
+<p>O tutorial foi testado no sistema operacional <em>Ubuntu Server 14.04.1</em> disponível para <a href="http://www.ubuntu.com/download/server">Download</a>.</p>
+<p>Primeiro resolver uma dependencia do sistema.</p>
+<pre><code>sudo apt-get install libapparmor1 libssl0.9.8</code></pre>
+<p>Depois baixar o arquivo <code>.deb</code> e instalar.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">wget</span> https://download2.rstudio.org/rstudio-server-1.0.136-amd64.deb
+<span class="kw">sudo</span> dpkg -i rstudio-server-1.0.136-amd64.deb</code></pre></div>
+<p>É recomendado acessar o site oficial e baixar a versão mais atual do programa encontrado <a href="http://www.rstudio.com/products/rstudio/download-server/">aqui</a>. Para acessar a IDE pelo navegador acesse o IP da maquina, porta 8787.</p>
+</div>
+<div id="pacotes-extras-opcional" class="section level2">
+<h2><span class="header-section-number">3.3</span> Pacotes extras (opcional)</h2>
+<p>Alguns pacotes do sistema poderão ser necessários ao trabalhar com determinados pacotes do R.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> apt-get install libcurl4-openssl-dev ghostscript libxml2-dev</code></pre></div>
+<p>Para gerar arquivos PDF de documento R Markdown e Sweave é preciso instalar o <em>TeX Live</em> no sistema, isso exige espaço em disco considerável.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> apt-get install texlive texlive-latex-extra texlive-fonts-extra texinfo</code></pre></div>
+<p>Para concluir instalar o git. O Rstudio tem integração com programas de versionamento de códigos.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> apt-get install git</code></pre></div>
 
 </div>
 </div>
@@ -168,8 +195,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="hardware.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="admin.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="hardware.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
