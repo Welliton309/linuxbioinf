@@ -1,0 +1,14 @@
+digraph start {
+
+graph []
+
+node [shape = circle,
+      width = 0.9]
+bin boot dev etc home lib media mnt opt proc 'root' run sbin srv sys tmp usr var welliton
+
+node [color = red]
+'/'
+
+'/' -> {bin boot dev etc home lib media mnt opt proc 'root' run sbin srv sys tmp usr var} [ dir = none ]
+home -> welliton [ dir = none ]
+}

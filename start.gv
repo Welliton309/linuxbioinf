@@ -1,0 +1,11 @@
+digraph start {
+
+graph []
+
+node [shape = circle,
+      color = red,
+      width = 0.9]
+'.'
+
+'.'
+}

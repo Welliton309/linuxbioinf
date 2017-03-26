@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="bioinf.html">
-<link rel="next" href="tips.html">
+<link rel="prev" href="index.html">
+<link rel="next" href="admin.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -156,107 +156,75 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="hardware" class="section level1">
-<h1><span class="header-section-number">5</span> Informações sobre Hardware</h1>
-<p>Nesse capítulo é apresentado comandos para obter informações do dispositivos instalados (<em>hardware</em>) no computador.</p>
-<div id="memoria-ram" class="section level2">
-<h2><span class="header-section-number">5.1</span> Memória RAM</h2>
-<div id="uso-da-memoria-ram" class="section level3">
-<h3><span class="header-section-number">5.1.1</span> Uso da memória RAM</h3>
-<p>Obter informação sobre memória principal (<em>RAM</em>) utilizada e disponível. O commando <code>free</code> imprime uma tabela com essas informações (em <em>kilobytes</em>):</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">free</span></code></pre></div>
-<pre><code>              total        used        free      shared  buff/cache   available
-Mem:        4010240     2578624      210096      361464     1221520      813780
-Swap:       4157436      420936     3736500</code></pre>
-<p>Dentre as opções que alteram a unidade de medida, a opção <code>-h</code> (ou <code>--human</code>) é recomendada por converter em unidades de acordo com os valores de cada unidade.</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">free</span> -h</code></pre></div>
-<pre><code>              total        used        free      shared  buff/cache   available
-Mem:           3,8G        2,5G        186M        371M        1,2G        776M
-Swap:          4,0G        411M        3,6G</code></pre>
-<p>No exemplo acima, a memória toal e utilizada aparecem em <em>gigabytes</em> e a memória disponível em <em>megabytes</em>.</p>
+<div id="commands" class="section level1">
+<h1><span class="header-section-number">2</span> Navegando pelo sistema</h1>
+<p>Ao abrir o programa terminal de linha de comando nós somos recebidos com uma tela em branco com apena uma linha de texto parecida com essa:</p>
+<pre><code>welliton@desk3:~$</code></pre>
+<p>Para muitos essa única linha é intimidadora pois não dá nenhuma pista do que fazer a seguir. Essa linha chamada de <em>prompt</em> (porque espera em prontidão por comandos) possui três informações importantes:</p>
+<p><code>welliton</code> é o usuário atual. Cada usuário verá o seu próprio nome. <code>desk3</code> é o nome do computador que é definido durante a instalação do sistema operacional. O <code>@</code> (arroba) lê-se <em>at</em> (em inglês) que significa <strong>em</strong> no sentido de lugar. O <code>:</code> (dois pontos) separa o nome do usuário do <strong>diretório de trabalho</strong>. O diretório de trabalho é o lugar, na estrutura de diretórios do sistema operacional, que o prompt de comando <strong>está</strong> atualmente. O diretório atual. O <code>~</code> (til) é um caractere curinga que significa <strong>diretório pessoal do usuário atual</strong>. Cada usuário tem seu próprio usuário pessoal chamado de diretório home (lar em inglês).</p>
+<p>A linha <code>welliton@desk3:~$</code> pode ser lida da seguinte forma: o usuário do sistema <code>welliton</code> está conectado ao computador chamado de <code>desk3</code> e seu diretório de trabalho é home. Mas onde, exatamente, eu estou?</p>
+<div class="figure"><span id="fig:unnamed-chunk-2"></span>
+<div id="htmlwidget-aba6e0e9068a5355bb39" style="width:96px;height:96px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-aba6e0e9068a5355bb39">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      color = red,\n      width = 0.9]\n\".\"\n\n\".\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 2.1: Ainda não sabemos em que lugar do sistema de arquivos nós estamos.
+</p>
 </div>
-<div id="informacoes-da-memoria-ram" class="section level3">
-<h3><span class="header-section-number">5.1.2</span> Informações da memória RAM</h3>
-<p>A linha de comando a seguir imprime informações sobre os pentes de memória RAM instalados no computador (<a href="https://www.cyberciti.biz/faq/check-ram-speed-linux/">referência</a>):</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> dmidecode --type 17</code></pre></div>
-<pre><code># dmidecode 3.0
-Getting SMBIOS data from sysfs.
-SMBIOS 2.6 present.
-
-Handle 0x000F, DMI type 17, 27 bytes
-Memory Device
-    Array Handle: 0x000D
-    Error Information Handle: Not Provided
-    Total Width: 64 bits
-    Data Width: 64 bits
-    Size: 2048 MB
-    Form Factor: DIMM
-    Set: None
-    Locator: DIMM0
-    Bank Locator: Not Specified
-    Type: DDR3
-    Type Detail: Synchronous
-    Speed: 1333 MHz
-    Manufacturer:                 
-    Serial Number: 03A9D7A7
-    Asset Tag: 061125
-    Part Number: SH564568FH8N6PHSFG
-
-Handle 0x0011, DMI type 17, 27 bytes
-Memory Device
-    Array Handle: 0x000D
-    Error Information Handle: Not Provided
-    Total Width: 64 bits
-    Data Width: 64 bits
-    Size: 2048 MB
-    Form Factor: DIMM
-    Set: None
-    Locator: DIMM1
-    Bank Locator: Not Specified
-    Type: DDR3
-    Type Detail: Synchronous
-    Speed: 1333 MHz
-    Manufacturer:                 
-    Serial Number: 03A9D6C5
-    Asset Tag: 061125
-    Part Number: SH564568FH8N6PHSFG</code></pre>
-<p>Nesse exemplo há dois pentes de memória RAM instalado no desktop. O tipo da memória (<code>Type</code>) é <strong>DDR3</strong> e o <em>slot</em> (<code>Form Factor</code>) é <strong>DIMM</strong>. O tamanho dos dois pentes de memória instalados (<code>Size</code>) é <strong>2 GB</strong> e a velocidade (<code>Speed</code>) é <strong>1333 MHz</strong>. A seguir um exemplo de informação de memória RAM de um servidor de processamento.</p>
-<pre><code># dmidecode 2.12
-SMBIOS 2.6 present.
-
-Handle 0x1100, DMI type 17, 28 bytes
-Memory Device
-    Array Handle: 0x1000
-    Error Information Handle: Not Provided
-    Total Width: 72 bits
-    Data Width: 64 bits
-    Size: 8192 MB
-    Form Factor: DIMM
-    Set: 1
-    Locator: DIMM_A1 
-    Bank Locator: Not Specified
-    Type: DDR3
-    Type Detail: Synchronous Registered (Buffered)
-    Speed: 1333 MHz
-    Manufacturer: 00CE00B380CE
-    Serial Number: 02657348
-    Asset Tag: 13111461
-    Part Number: M393B1K70CHD-CH9  
-    Rank: 2
-
-...</code></pre>
-<p>A informação do pente de memória aparece mais 17 vezes! Dessa forma, esse servidor tem <strong>144 GB</strong> de memória RAM.</p>
-
+<p>O comando <code>pwd</code> (de <em><strong>p</strong>rint <strong>w</strong>orking <strong>d</strong>irectory</em>) imprime o caminho absoluto da localização do diretório atual.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pwd</span></code></pre></div>
+<pre><code>/home/welliton</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-4"></span>
+<div id="htmlwidget-cd76127ea218cbb71dfa" style="width:96px;height:288px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cd76127ea218cbb71dfa">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      width = 0.9]\n\"/\" home\n\nnode [color = red]\nwelliton\n\n\"/\" -> home -> welliton [ dir = none ]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 2.2: Agora nós sabemos qual a localização do diretório que estamos. O circulo pintado de vermelho representa o diretório de trabalho.
+</p>
 </div>
+<p>Agora nós sabemos que o diretório home do usuário welliton é <code>/home/welliton</code>. Por padrão todos os usuários do sistema possui um diretório dentro de <code>/home</code> com o mesmo nome do usuário. O sistema de diretório do Linux (e de outros sistemas operacionais) é estruturado como uma <strong>árvore invertida</strong>. A localização mais alta, chamada de <strong>root</strong> (sim, o mesmo nome do super usuário), é representado por uma barra (<code>/</code>) e contém todos os outros diretórios de nível mais baixo.</p>
+<p>Um caminho (path em inglês) é <strong>absoluto</strong> quando o seu início é a raiz do sistema de arquivos, ou seja, quando começa com <code>/</code>. Na saída do comando <code>pwd</code>, o caminho começa com <code>/</code> seguido por <code>home</code> seguido por outra <code>/</code> (nesse caso é usada para separar os nomes de dois diretórios) seguido por <code>welliton</code>.</p>
+<p>Resumindo, o comando <code>pwd</code> é usado para descobrir qual é o caminho absoluto do diretório de trabalho. E se quisermos mover para outro diretório? O diretório <code>/home</code> por exemplo.</p>
+<p>O comando <code>cd</code> (de <em><strong>c</strong>hange <strong>d</strong>irectory</em>) recebe como argumento o caminho do diretório que nós queremos mover-se até ele. O caminho pode ser absoluto ou <strong>relativo</strong>. O caminho relativo é <strong>dependente</strong> do diretório de trabalho. Por exemplo, vamos nos mover para o diretório <code>/home</code> usando o caminho absoluto.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /home</code></pre></div>
+<p>Observe que a linha de <em>prompt</em> mudou para <code>welliton@desk3:/home$</code> indicando que agora estamos no diretório <code>/home</code>. Se executarmos o comando <code>pwd</code> veremos que o diretório de trabalho mudou.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pwd</span></code></pre></div>
+<pre><code>/home</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-7"></span>
+<div id="htmlwidget-08611ad061dd0b641f29" style="width:96px;height:288px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-08611ad061dd0b641f29">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      width = 0.9]\n\"/\" welliton\n\nnode [color = red]\nhome\n\n\"/\" -> home -> welliton [dir = none]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 2.3: Mudamos nosso diretório de trabalho para <code>/home</code>.
+</p>
 </div>
+<p>Agora vamos voltar para o diretório de trabalho anterior (<code>/home/welliton</code>) usando o caminho relativo. Pelo diagrama e também pelo caminho absoluto, nós sabemos que o diretório <code>welliton</code> está <em>dentro</em> do diretório <code>home</code> (nosso diretório de trabalho).</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> welliton</code></pre></div>
+<p>Voltamos para o diretório pessoal do usuário (sabemos pelo <code>~</code> na linha de <em>prompt</em>). Agora vamos para o diretório raiz do sistema de arquivos. Novamente há duas formas, usando o caminho absoluto e relativo. Primeiro absoluto.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> /</code></pre></div>
+<p>Simples não? Agora vamos tentar pelo caminho relativo mas antes precisamos voltar para o diretório pessoal do usuário. Lembra que o <code>~</code> é um curinga para representar o diretório pessoal?</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> ~</code></pre></div>
+<p>Pronto, voltamos para o diretório pessoal. Executar o comando <code>cd</code> sem argumentos também irá nos direcionar para o diretório pessoal. Como ir para o diretório raiz a partir de um subdiretório? O curinga <code>..</code> representa o diretório superior. Nós sabemos que o diretório atual está dois níveis acima do diretório raiz.</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">cd</span> ../..</code></pre></div>
+<p>Pronto! Estamos novamente no diretório raiz!</p>
+<p>O diretório raiz contém diversos subdiretórios, cada um armazena arquivos e diretórios separados por seus papéis no sistema operacional. O comando <code>ls</code> (de <em><strong>l</strong>i<strong>s</strong>t</em>) lista o conteúdo do diretório passado como argumento. Se não informado nenhum argumento, o comando <code>ls</code> irá imprimir a listagem de arquivos do diretório de trabalho (que em nosso caso é <code>/</code>).</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">ls</span></code></pre></div>
+<pre><code>bin    dev   initrd.img  lost+found  opt   run   srv  usr
+boot   etc   lib         media       proc  sbin  sys  var
+cdrom  home  lib64       mnt         root  snap  tmp  vmlinuz</code></pre>
+<div class="figure"><span id="fig:unnamed-chunk-13"></span>
+<div id="htmlwidget-aca75e9d8881d4e585a7" style="width:672px;height:288px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-aca75e9d8881d4e585a7">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      width = 0.9]\nbin boot dev etc home lib media mnt opt proc \"root\" run sbin srv sys tmp usr var welliton\n\nnode [color = red]\n\"/\"\n\n\"/\" -> {bin boot dev etc home lib media mnt opt proc \"root\" run sbin srv sys tmp usr var} [ dir = none ]\nhome -> welliton [ dir = none ]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 2.4: Estrutura de diretórios do Linux. Alguns diretórios foram omitidos.
+</p>
+</div>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="bioinf.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tips.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="admin.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

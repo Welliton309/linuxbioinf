@@ -1,0 +1,13 @@
+digraph start {
+
+graph []
+
+node [shape = circle,
+      width = 0.9]
+'/' home
+
+node [color = red]
+welliton
+
+'/' -> home -> welliton [ dir = none ]
+}
