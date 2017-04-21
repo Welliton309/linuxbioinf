@@ -17,8 +17,8 @@ O `:` (dois pontos) separa o nome do usuário do __diretório de trabalho__. O d
 A linha `welliton@desk3:~$` pode ser lida da seguinte forma: o usuário do sistema `welliton` está conectado ao computador chamado de `desk3` e seu diretório de trabalho é home. Mas onde, exatamente, eu estou?
 
 <div class="figure">
-<!--html_preserve--><div id="htmlwidget-aba6e0e9068a5355bb39" style="width:96px;height:96px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-aba6e0e9068a5355bb39">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      color = red,\n      width = 0.9]\n\".\"\n\n\".\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-d30e2d9b2f52df5b9736" style="width:96px;height:96px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d30e2d9b2f52df5b9736">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      color = red,\n      width = 0.9]\n\".\"\n\n\".\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 <p class="caption">(\#fig:unnamed-chunk-2)Ainda não sabemos em que lugar do sistema de arquivos nós estamos.</p>
 </div>
 
@@ -34,8 +34,8 @@ pwd
 ```
 
 <div class="figure">
-<!--html_preserve--><div id="htmlwidget-cd76127ea218cbb71dfa" style="width:96px;height:288px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cd76127ea218cbb71dfa">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      width = 0.9]\n\"/\" home\n\nnode [color = red]\nwelliton\n\n\"/\" -> home -> welliton [ dir = none ]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-6a1ad0742e00232934d9" style="width:96px;height:288px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6a1ad0742e00232934d9">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      width = 0.9]\n\"/\" home\n\nnode [color = red]\nwelliton\n\n\"/\" -> home -> welliton [ dir = none ]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 <p class="caption">(\#fig:unnamed-chunk-4)Agora nós sabemos qual a localização do diretório que estamos. O circulo pintado de vermelho representa o diretório de trabalho.</p>
 </div>
 
@@ -64,8 +64,8 @@ pwd
 ```
 
 <div class="figure">
-<!--html_preserve--><div id="htmlwidget-08611ad061dd0b641f29" style="width:96px;height:288px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-08611ad061dd0b641f29">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      width = 0.9]\n\"/\" welliton\n\nnode [color = red]\nhome\n\n\"/\" -> home -> welliton [dir = none]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-962ea86cb5b054f06bbf" style="width:96px;height:288px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-962ea86cb5b054f06bbf">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      width = 0.9]\n\"/\" welliton\n\nnode [color = red]\nhome\n\n\"/\" -> home -> welliton [dir = none]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 <p class="caption">(\#fig:unnamed-chunk-7)Mudamos nosso diretório de trabalho para `/home`.</p>
 </div>
 
@@ -113,7 +113,7 @@ cdrom  home  lib64       mnt         root  snap  tmp  vmlinuz
 ```
 
 <div class="figure">
-<!--html_preserve--><div id="htmlwidget-aca75e9d8881d4e585a7" style="width:672px;height:288px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-aca75e9d8881d4e585a7">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      width = 0.9]\nbin boot dev etc home lib media mnt opt proc \"root\" run sbin srv sys tmp usr var welliton\n\nnode [color = red]\n\"/\"\n\n\"/\" -> {bin boot dev etc home lib media mnt opt proc \"root\" run sbin srv sys tmp usr var} [ dir = none ]\nhome -> welliton [ dir = none ]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-ea88be05f65582256baa" style="width:672px;height:288px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ea88be05f65582256baa">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      width = 0.9]\nbin boot dev etc home lib media mnt opt proc \"root\" run sbin srv sys tmp usr var welliton\n\nnode [color = red]\n\"/\"\n\n\"/\" -> {bin boot dev etc home lib media mnt opt proc \"root\" run sbin srv sys tmp usr var} [ dir = none ]\nhome -> welliton [ dir = none ]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 <p class="caption">(\#fig:unnamed-chunk-13)Estrutura de diretórios do Linux. Alguns diretórios foram omitidos.</p>
 </div>

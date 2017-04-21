@@ -11,7 +11,7 @@ Nesse capítulo é apresentado comandos para obter informações do dispositivos
 ### Uso da memória RAM
 
 Obter informação sobre memória principal (_RAM_) utilizada e disponível.
-O commando `free` imprime uma tabela com essas informações (em _kilobytes_):
+O comando `free` imprime uma tabela com essas informações (em _kilobytes_):
 
 ```{bash}
 free
@@ -124,3 +124,44 @@ Memory Device
 
 A informação do pente de memória aparece mais 17 vezes!
 Dessa forma, esse servidor tem __`r 8192 * 18 / 1024` GB__ de memória RAM.
+
+## Fonte de energia
+
+Alguns tipos de servidores podem ter fontes de energia redundantes.
+Para isso o computador possui pelo menos 2 fontes, ambas conetadas a energia elétrica.
+Quando uma das fontes para de funcionar a outra fonte entra em funcionamento.
+É possível verificar o estado das funtes de energia a partir da linha de comando.
+O comando `dmidecode` fornece as informações necessárias.
+Entretanto, as vezes essa informação não está disponível.
+O comando `ipmitool` também fornece informações das fontes de energia.
+Por padrão, esse utilitário não vem instalado no sistema operacional.
+
+```{bash}
+sudo dmidecode --type 39
+```
+
+```
+# dmidecode 2.12
+SMBIOS 2.6 present.
+```
+
+Nesse exemplo, o `dmidecode` não deu informações releventes.
+Primeiro precisamos instalar o `ipmitool`.
+
+```{bash}
+sudo apt-get install --yes ipmitool
+```
+
+E então executar a seguinte linha de comando.
+
+```{bash}
+sudo ipmitool sdr type "Power Supply"
+```
+
+```
+Status           | 64h | ok  | 10.1 | Presence detected
+Status           | 65h | ok  | 10.2 | Presence detected
+PS Redundancy    | 74h | ok  |  7.1 | Fully Redundant
+```
+
+Nesse exemplo, a saída do comando mostra que há duas fontes de energia com suporte a redundância.
