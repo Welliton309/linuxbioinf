@@ -131,7 +131,7 @@ Dessa forma, esse servidor tem __144 GB__ de memória RAM.
 Alguns tipos de servidores podem ter fontes de energia redundantes.
 Para isso o computador possui pelo menos 2 fontes, ambas conetadas a energia elétrica.
 Quando uma das fontes para de funcionar a outra fonte entra em funcionamento.
-É possível verificar o estado das funtes de energia a partir da linha de comando.
+É possível verificar o estado das fontes de energia a partir da linha de comando.
 O comando `dmidecode` fornece as informações necessárias.
 Entretanto, as vezes essa informação não está disponível.
 O comando `ipmitool` também fornece informações das fontes de energia.
@@ -147,7 +147,7 @@ sudo dmidecode --type 39
 SMBIOS 2.6 present.
 ```
 
-Nesse exemplo, o `dmidecode` não deu informações releventes.
+Nesse exemplo, o `dmidecode` não deu informações relevantes.
 Primeiro precisamos instalar o `ipmitool`.
 
 

@@ -25,7 +25,7 @@
 <meta name="author" content="Welliton Souza">
 
 
-<meta name="date" content="2017-04-21">
+<meta name="date" content="2017-04-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -164,8 +164,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><code>welliton</code> é o usuário atual. Cada usuário verá o seu próprio nome. <code>desk3</code> é o nome do computador que é definido durante a instalação do sistema operacional. O <code>@</code> (arroba) lê-se <em>at</em> (em inglês) que significa <strong>em</strong> no sentido de lugar. O <code>:</code> (dois pontos) separa o nome do usuário do <strong>diretório de trabalho</strong>. O diretório de trabalho é o lugar, na estrutura de diretórios do sistema operacional, que o prompt de comando <strong>está</strong> atualmente. O diretório atual. O <code>~</code> (til) é um caractere curinga que significa <strong>diretório pessoal do usuário atual</strong>. Cada usuário tem seu próprio usuário pessoal chamado de diretório home (lar em inglês).</p>
 <p>A linha <code>welliton@desk3:~$</code> pode ser lida da seguinte forma: o usuário do sistema <code>welliton</code> está conectado ao computador chamado de <code>desk3</code> e seu diretório de trabalho é home. Mas onde, exatamente, eu estou?</p>
 <div class="figure"><span id="fig:unnamed-chunk-2"></span>
-<div id="htmlwidget-d30e2d9b2f52df5b9736" style="width:96px;height:96px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d30e2d9b2f52df5b9736">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      color = red,\n      width = 0.9]\n\".\"\n\n\".\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d0165556747631d92393" style="width:96px;height:96px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d0165556747631d92393">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      color = red,\n      width = 0.9]\n\".\"\n\n\".\"\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 2.1: Ainda não sabemos em que lugar do sistema de arquivos nós estamos.
 </p>
@@ -174,8 +174,8 @@ Figure 2.1: Ainda não sabemos em que lugar do sistema de arquivos nós estamos.
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pwd</span></code></pre></div>
 <pre><code>/home/welliton</code></pre>
 <div class="figure"><span id="fig:unnamed-chunk-4"></span>
-<div id="htmlwidget-6a1ad0742e00232934d9" style="width:96px;height:288px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6a1ad0742e00232934d9">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      width = 0.9]\n\"/\" home\n\nnode [color = red]\nwelliton\n\n\"/\" -> home -> welliton [ dir = none ]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c4f36ec5bda8af005ce2" style="width:96px;height:288px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c4f36ec5bda8af005ce2">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      width = 0.9]\n\"/\" home\n\nnode [color = red]\nwelliton\n\n\"/\" -> home -> welliton [ dir = none ]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 2.2: Agora nós sabemos qual a localização do diretório que estamos. O circulo pintado de vermelho representa o diretório de trabalho.
 </p>
@@ -189,8 +189,8 @@ Figure 2.2: Agora nós sabemos qual a localização do diretório que estamos. O
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pwd</span></code></pre></div>
 <pre><code>/home</code></pre>
 <div class="figure"><span id="fig:unnamed-chunk-7"></span>
-<div id="htmlwidget-962ea86cb5b054f06bbf" style="width:96px;height:288px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-962ea86cb5b054f06bbf">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      width = 0.9]\n\"/\" welliton\n\nnode [color = red]\nhome\n\n\"/\" -> home -> welliton [dir = none]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f96bc6d4e29e662bc478" style="width:96px;height:288px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f96bc6d4e29e662bc478">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      width = 0.9]\n\"/\" welliton\n\nnode [color = red]\nhome\n\n\"/\" -> home -> welliton [dir = none]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 2.3: Mudamos nosso diretório de trabalho para <code>/home</code>.
 </p>
@@ -210,8 +210,8 @@ Figure 2.3: Mudamos nosso diretório de trabalho para <code>/home</code>.
 boot   etc   lib         media       proc  sbin  sys  var
 cdrom  home  lib64       mnt         root  snap  tmp  vmlinuz</code></pre>
 <div class="figure"><span id="fig:unnamed-chunk-13"></span>
-<div id="htmlwidget-ea88be05f65582256baa" style="width:672px;height:288px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ea88be05f65582256baa">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      width = 0.9]\nbin boot dev etc home lib media mnt opt proc \"root\" run sbin srv sys tmp usr var welliton\n\nnode [color = red]\n\"/\"\n\n\"/\" -> {bin boot dev etc home lib media mnt opt proc \"root\" run sbin srv sys tmp usr var} [ dir = none ]\nhome -> welliton [ dir = none ]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d9854ad39e98775d10b7" style="width:672px;height:288px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d9854ad39e98775d10b7">{"x":{"diagram":"digraph start {\n\ngraph []\n\nnode [shape = circle,\n      width = 0.9]\nbin boot dev etc home lib media mnt opt proc \"root\" run sbin srv sys tmp usr var welliton\n\nnode [color = red]\n\"/\"\n\n\"/\" -> {bin boot dev etc home lib media mnt opt proc \"root\" run sbin srv sys tmp usr var} [ dir = none ]\nhome -> welliton [ dir = none ]\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 2.4: Estrutura de diretórios do Linux. Alguns diretórios foram omitidos.
 </p>

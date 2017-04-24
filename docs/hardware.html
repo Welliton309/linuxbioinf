@@ -25,7 +25,7 @@
 <meta name="author" content="Welliton Souza">
 
 
-<meta name="date" content="2017-04-21">
+<meta name="date" content="2017-04-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -250,11 +250,11 @@ Memory Device
 </div>
 <div id="fonte-de-energia" class="section level2">
 <h2><span class="header-section-number">5.2</span> Fonte de energia</h2>
-<p>Alguns tipos de servidores podem ter fontes de energia redundantes. Para isso o computador possui pelo menos 2 fontes, ambas conetadas a energia elétrica. Quando uma das fontes para de funcionar a outra fonte entra em funcionamento. É possível verificar o estado das funtes de energia a partir da linha de comando. O comando <code>dmidecode</code> fornece as informações necessárias. Entretanto, as vezes essa informação não está disponível. O comando <code>ipmitool</code> também fornece informações das fontes de energia. Por padrão, esse utilitário não vem instalado no sistema operacional.</p>
+<p>Alguns tipos de servidores podem ter fontes de energia redundantes. Para isso o computador possui pelo menos 2 fontes, ambas conetadas a energia elétrica. Quando uma das fontes para de funcionar a outra fonte entra em funcionamento. É possível verificar o estado das fontes de energia a partir da linha de comando. O comando <code>dmidecode</code> fornece as informações necessárias. Entretanto, as vezes essa informação não está disponível. O comando <code>ipmitool</code> também fornece informações das fontes de energia. Por padrão, esse utilitário não vem instalado no sistema operacional.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> dmidecode --type 39</code></pre></div>
 <pre><code># dmidecode 2.12
 SMBIOS 2.6 present.</code></pre>
-<p>Nesse exemplo, o <code>dmidecode</code> não deu informações releventes. Primeiro precisamos instalar o <code>ipmitool</code>.</p>
+<p>Nesse exemplo, o <code>dmidecode</code> não deu informações relevantes. Primeiro precisamos instalar o <code>ipmitool</code>.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> apt-get install --yes ipmitool</code></pre></div>
 <p>E então executar a seguinte linha de comando.</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">sudo</span> ipmitool sdr type <span class="st">&quot;Power Supply&quot;</span></code></pre></div>
